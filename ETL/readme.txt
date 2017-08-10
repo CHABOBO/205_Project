@@ -8,6 +8,10 @@ This process retrieves data files from the National Center for Educational Stati
 
 The output of the script is two csv files: fiscal.csv and nonfiscal.csv
 
+The github repository contains generated fiscal.csv and nonfiscal.csv files.
+If you want to run the script to generate them afresh, make sure you rename
+the existing files first.
+
 The most likely cause of problems running the script is network glitches preventing the files from being downloaded. The script will capture those errors and exit rather than extracting an incomplete data set. The simplest approach to handling those errors is to just rerun the script. The script completes very quickly.
 
 2. The load.sql script is executed within PostgreSQL: \i /home/w205/205_Project/ETL/load.sql
