@@ -1,0 +1,6 @@
+https://nces.ed.gov/ccd/Data/zip/st131a_imp_txt.zip
+https://nces.ed.gov/ccd/Data/zip/st121a_imp_txt.zip
+https://nces.ed.gov/ccd/Data/zip/st111a_txt.zip
+https://nces.ed.gov/ccd/Data/zip/st101a_txt.zip
+https://nces.ed.gov/ccd/data/zip/st091b_txt.zip
+https://nces.ed.gov/ccd/data/zip/st081c_txt.zip

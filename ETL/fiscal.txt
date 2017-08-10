@@ -1,0 +1,13 @@
+https://nces.ed.gov/ccd/data/zip/stfis14_1a.zip
+https://nces.ed.gov/ccd/data/zip/stfis13_1a.zip
+https://nces.ed.gov/ccd/data/zip/Stfis_1a_txt.zip
+https://nces.ed.gov/ccd/data/zip/stfis111a_txt.zip
+https://nces.ed.gov/ccd/data/zip/stfis101a_txt.zip
+https://nces.ed.gov/ccd/data/zip/stfis091b_txt.zip
+https://nces.ed.gov/ccd/data/zip/stfis081b_txt.zip
+https://nces.ed.gov/ccd/data/zip/stfis071b_txt.zip
+https://nces.ed.gov/ccd/data/zip/Stfis061b_txt.zip
+https://nces.ed.gov/ccd/data/zip/Stfis051b_txt.zip
+https://nces.ed.gov/ccd/data/zip/stfis041b_txt.zip
+https://nces.ed.gov/ccd/data/zip/Stfis031b_txt.zip
+https://nces.ed.gov/ccd/data/zip/stfis021d_txt.zip
