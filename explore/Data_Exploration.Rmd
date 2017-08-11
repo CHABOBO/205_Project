@@ -23,7 +23,7 @@ library(car)
 require(ggplot2)
 require(stringi) 
 drv <- dbDriver("PostgreSQL")
-con <- dbConnect(drv, dbname="w205project", host="ec2-34-228-75-222.compute-1.amazonaws.com", 
+con <- dbConnect(drv, dbname="w205project", host="ec2-54-237-202-211.compute-1.amazonaws.com", 
                  port=5432, user="postgres")
 ```
 
@@ -231,7 +231,7 @@ qry <- stri_paste("SELECT (f.local_revenue/nf.total_students) as local_revenue_p
                   df_local_revenue_range$state[4],"','", df_local_revenue_range$state[5],"')",collapse="") 
 df_local_revenue_range_score <- dbGetQuery(con, qry)
 ggplot(df_local_revenue_range_score, aes(x = local_revenue_per_student, y = math_score, colour = state)) + geom_point() + 
-  geom_line() + labs(x = "Local Revenue per Student", y = "Math Score", title = "Math Score by Total Revenue per Student")
+  geom_line() + labs(x = "Local Revenue per Student", y = "Math Score", title = "Math Score by Local Revenue per Student")
 ggplot(df_local_revenue_range_score, aes(x = local_revenue_per_student, y = reading_score, colour = state)) + geom_point()  + 
   geom_line() + labs(x = "Local Revenue per Student", y = "Reading Score", title = "Reading Score by Local Revenue per Student")
 
@@ -298,15 +298,36 @@ ggplot(teacher_salary, aes(x = teacher_pay, y = reading_score, colour = state)) 
 
 ```
 
+Let's check whether the result is any different when we calculate salary and benefit package per teacher.
+
+```{r, echo=TRUE, warning=FALSE}
+teacher_salary_per_teacher <- dbGetQuery(con, "SELECT (f.teacher_salaries + f.teacher_benefits)/nf.total_teachers as teacher_pay_per_teacher, 
+                             s.math_score, s.reading_score, s.state from fiscal f, naep8 s, nonfiscal nf 
+                             where f.state=s.state and f.state = nf.state and
+                             f.survey_year = s.test_year and f.survey_year = nf.survey_year;")
+ggplot(teacher_salary_per_teacher, aes(x = teacher_pay_per_teacher, y = math_score, colour = state)) + geom_point() + 
+  labs(x = "Teacher Salary and Benefit Package Per Teacher", y = "Math Scores", title = "Math Score by Teacher Salary and Benefits Per Teacher")
+ggplot(teacher_salary_per_teacher, aes(x = teacher_pay_per_teacher, y = reading_score, colour = state)) + geom_point() + 
+  labs(x = "Teacher Salary and Benefit Package Per Teacher", y = "Reading Scores", title = "Reading Score by Teacher Salary and Benefits Per Teacher")
+
+```
+
 ## Discussion
 
-Our exploratory analysis found a possible relationship between revenue per student and math or reading scores. 
+Our exploratory analysis identified the following:
 
-We also found that there may be a closer relationship between local revenue and academic outcome than other sources of revenue.
+1. higher values of total revenue per student appear to correspond to better math and reading scores
 
-When we examined where the funding was being spent we did see a possible relationship between smaller class sizes and educational outcomes.
+2. local revenue appears to be more closely tied to better math and reading scores than total revenue
 
-Taking this research further in a future project, it would be interesting to look in more depth at the way the funding is spent. Our initial analysis has focused on a subset of the Common Core of Data, so there is scope to expand this investigation.
+3. improvements in math and reading scores appear to correspond to increases in revenue, again more closely linked to local revenue
+
+4. smaller teacher/student ratios correspond to better math and reading scores
+
+5. higher teacher salary and benefit packages per teacher correspond to better math and reading scores for students
+
+We also found that the data for DC included outlier values and not applicable values so we might want to focus on the 50 states in our final presentation for more consistent data.
+
 
 
 
