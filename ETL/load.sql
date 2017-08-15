@@ -77,7 +77,7 @@ BEGIN
     ELSIF ( NEW.state IN ( 'SC','SD','TN','TX','UT','VT','VA','WA','WV','WI','WY' )) THEN
         INSERT INTO fiscal_5 VALUES (NEW.*);
     ELSE
-        RAISE EXCEPTION 'State out of range: fiscal_insert_trigger() function';
+        RAISE NOTICE 'State out of range: fiscal_insert_trigger() function';
     END IF;
     RETURN NULL;
 END;
@@ -133,7 +133,7 @@ BEGIN
     ELSIF ( NEW.state IN ( 'SC','SD','TN','TX','UT','VT','VA','WA','WV','WI','WY' )) THEN
         INSERT INTO nonfiscal_5 VALUES (NEW.*);
     ELSE
-        RAISE EXCEPTION 'State out of range: nonfiscal_insert_trigger() function';
+        RAISE NOTICE 'State out of range: nonfiscal_insert_trigger() function';
     END IF;
     RETURN NULL;
 END;
@@ -190,7 +190,7 @@ BEGIN
     ELSIF ( NEW.state IN ( 'SC','SD','TN','TX','UT','VT','VA','WA','WV','WI','WY' )) THEN
         INSERT INTO naep8_5 VALUES (NEW.*);
     ELSE
-        RAISE EXCEPTION 'State out of range: naep8_insert_trigger() function';
+        RAISE NOTICE 'State out of range: naep8_insert_trigger() function';
     END IF;
     RETURN NULL;
 END;
