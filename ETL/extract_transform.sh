@@ -59,7 +59,7 @@ if ! wget $url -O temp.zip; then
   exit 1
 fi
 
-unzip -p temp.zip | sed 's/,/ /g' | sed -r 's/(.{4})(.{2})(.{2})(.{194})(.{6})(.{150})(.{8})(.{40})(.{8})(.{675})/\1,\2,\3,\4,\5,\6,\7,\8,\9,\10/' | while IFS=$',' read -r survey_year FIPST state SKIP total_teachers SKIP grade8_students SKIP total_students SKIP ; do echo "$survey_year,$state,$total_teachers,$grade8_students,$total_students"; done | tail -n +2 | head -n 51 >> nonfiscal.csv
+unzip -p temp.zip | sed 's/,/ /g' | sed -r 's/(.{4})(.{2})(.{2})(.{194})(.{6})(.{150})(.{8})(.{40})(.{8})(.{675})/\1,\2,\3,\4,\5,\6,\7,\8,\9,\10/' | while IFS=$',' read -r survey_year FIPST state SKIP total_teachers SKIP grade8_students SKIP total_students SKIP ; do echo "$survey_year,$state,$total_teachers,$grade8_students,$total_students"; done | head -n 51 >> nonfiscal.csv
 
 wc -l nonfiscal.csv;
 rm temp.zip
